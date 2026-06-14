@@ -1,0 +1,12 @@
+# Ne jamais committer de secrets
+.env
+.env.*
+*.local
+secrets/
+*.key
+*.pem
+
+# Outils / éditeur
+.claude/
+.DS_Store
+node_modules/
