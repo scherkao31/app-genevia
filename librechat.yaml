@@ -7,6 +7,20 @@ cache: true
 # product_id: 109317
 # ----------------------------------------------------------------------------
 
+# ----------------------------------------------------------------------------
+# Credits par utilisateur (protege la marge / usage equitable).
+# 1 credit ~= 1 token consomme (entree + sortie).
+# Reperes de cout Infomaniak : ~0.50 CHF / M tokens entree, ~1.50 CHF / M sortie.
+# Ajuste refillAmount selon le budget mensuel que tu acceptes par utilisateur.
+# ----------------------------------------------------------------------------
+balance:
+  enabled: true
+  startBalance: 15000000        # credits offerts a l'inscription (~15 M tokens)
+  autoRefillEnabled: true
+  refillIntervalValue: 30
+  refillIntervalUnit: "days"
+  refillAmount: 15000000        # recharge ajoutee tous les 30 jours
+
 interface:
   customWelcome: "Bienvenue sur Lancya, {{user.name}}. Votre IA pense en Suisse."
   # On masque les reglages avances pour eviter la paralysie du choix
