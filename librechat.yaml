@@ -59,35 +59,37 @@ modelSpecs:
   enforce: true
   prioritize: true
   list:
-    - name: "rapide"
-      label: "Lancya Rapide"
-      description: "Reponses instantanees pour les questions simples, brouillons et reformulations. Le plus economique. (Ministral)"
+    - name: "standard"
+      label: "Lancya"
+      default: true
+      description: "Le modele le plus complet : raisonnement, recherche web et outils, automatiquement. Recommande par defaut. (Qwen 3.5)"
       artifacts: true
       preset:
         endpoint: "Lancya"
-        model: "mistralai/Ministral-3-14B-Instruct-2512"
-    - name: "standard"
-      label: "Lancya Standard (souverain)"
-      default: true
-      description: "Le modele suisse Apertus. Bon equilibre pour la plupart des taches. Recommande par defaut."
+        model: "Qwen/Qwen3.5-397B-A17B-FP8"
+        web_search: true
+    - name: "suisse"
+      label: "Lancya Suisse"
+      description: "Le modele 100% suisse (Apertus). Ideal pour le chat et la confidentialite maximale. N'utilise pas les outils."
       artifacts: true
       preset:
         endpoint: "Lancya"
         model: "swiss-ai/Apertus-70B-Instruct-2509"
     - name: "qualite"
       label: "Lancya Qualite"
-      description: "Pour la redaction soignee, l'analyse et les textes longs. (Mistral Small)"
+      description: "Redaction soignee, analyse et textes longs, avec recherche web. (Mistral Small)"
       artifacts: true
       preset:
         endpoint: "Lancya"
         model: "mistralai/Mistral-Small-4-119B-2603"
-    - name: "expert"
-      label: "Lancya Expert"
-      description: "Le plus puissant. Raisonnement complexe, problemes difficiles, code. Un peu plus lent. (Qwen 3.5)"
+        web_search: true
+    - name: "rapide"
+      label: "Lancya Rapide"
+      description: "Reponses instantanees, le plus economique. Pour les questions simples. (Ministral)"
       artifacts: true
       preset:
         endpoint: "Lancya"
-        model: "Qwen/Qwen3.5-397B-A17B-FP8"
+        model: "mistralai/Ministral-3-14B-Instruct-2512"
 
 endpoints:
   custom:
