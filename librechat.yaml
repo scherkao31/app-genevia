@@ -62,11 +62,19 @@ modelSpecs:
     - name: "standard"
       label: "Lancya"
       default: true
-      description: "Le modele le plus complet : raisonnement, recherche web et outils, automatiquement. Recommande par defaut. (Qwen 3.5)"
+      description: "Rapide, intelligent et agentique : recherche web et outils automatiquement. Recommande par defaut. (Mistral Small 4)"
       artifacts: true
       preset:
         endpoint: "Lancya"
-        model: "Qwen/Qwen3.5-397B-A17B-FP8"
+        model: "mistralai/Mistral-Small-4-119B-2603"
+        web_search: true
+    - name: "expert"
+      label: "Lancya Expert"
+      description: "Le plus puissant. Raisonnement profond pour les problemes complexes et le code. Plus lent. (Kimi K2.6)"
+      artifacts: true
+      preset:
+        endpoint: "Lancya"
+        model: "moonshotai/Kimi-K2.6"
         web_search: true
     - name: "suisse"
       label: "Lancya Suisse"
@@ -75,14 +83,6 @@ modelSpecs:
       preset:
         endpoint: "Lancya"
         model: "swiss-ai/Apertus-70B-Instruct-2509"
-    - name: "qualite"
-      label: "Lancya Qualite"
-      description: "Redaction soignee, analyse et textes longs, avec recherche web. (Mistral Small)"
-      artifacts: true
-      preset:
-        endpoint: "Lancya"
-        model: "mistralai/Mistral-Small-4-119B-2603"
-        web_search: true
     - name: "rapide"
       label: "Lancya Rapide"
       description: "Reponses instantanees, le plus economique. Pour les questions simples. (Ministral)"
@@ -98,8 +98,9 @@ endpoints:
       baseURL: 'https://api.infomaniak.com/2/ai/${PRODUCT_ID}/openai/v1'
       models:
         default:
-          - 'swiss-ai/Apertus-70B-Instruct-2509'
           - 'mistralai/Mistral-Small-4-119B-2603'
+          - 'moonshotai/Kimi-K2.6'
+          - 'swiss-ai/Apertus-70B-Instruct-2509'
           - 'mistralai/Ministral-3-14B-Instruct-2512'
           - 'Qwen/Qwen3.5-397B-A17B-FP8'
         fetch: false
