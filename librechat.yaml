@@ -23,6 +23,7 @@ balance:
 
 interface:
   customWelcome: "Bienvenue sur Lancya, {{user.name}}. Votre IA pense en Suisse."
+  customFooter: "Lancya · IA souveraine, hébergée en Suisse"
   # On masque les reglages avances pour eviter la paralysie du choix
   parameters: false
   presets: false
