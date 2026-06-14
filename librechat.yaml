@@ -27,6 +27,19 @@ interface:
   parameters: false
   presets: false
 
+# ----------------------------------------------------------------------------
+# Memoire utilisateur (contexte retenu d'une conversation a l'autre).
+# Le traitement memoire utilise le Ministral (souverain, bon marche).
+# ----------------------------------------------------------------------------
+memory:
+  disabled: false
+  personalize: true
+  tokenLimit: 2000
+  messageWindowSize: 5
+  agent:
+    provider: "Lancya"
+    model: "mistralai/Ministral-3-14B-Instruct-2512"
+
 # modelSpecs = la liste curatee des modeles Lancya.
 # enforce: true masque TOUS les autres endpoints (OpenAI, Anthropic, Google, My Agents).
 # Seuls les modeles ci-dessous sont selectionnables.
@@ -37,6 +50,7 @@ modelSpecs:
     - name: "rapide"
       label: "Lancya Rapide"
       description: "Reponses instantanees pour les questions simples, brouillons et reformulations. Le plus economique. (Ministral)"
+      artifacts: true
       preset:
         endpoint: "Lancya"
         model: "mistralai/Ministral-3-14B-Instruct-2512"
@@ -44,18 +58,21 @@ modelSpecs:
       label: "Lancya Standard (souverain)"
       default: true
       description: "Le modele suisse Apertus. Bon equilibre pour la plupart des taches. Recommande par defaut."
+      artifacts: true
       preset:
         endpoint: "Lancya"
         model: "swiss-ai/Apertus-70B-Instruct-2509"
     - name: "qualite"
       label: "Lancya Qualite"
       description: "Pour la redaction soignee, l'analyse et les textes longs. (Mistral Small)"
+      artifacts: true
       preset:
         endpoint: "Lancya"
         model: "mistralai/Mistral-Small-4-119B-2603"
     - name: "expert"
       label: "Lancya Expert"
       description: "Le plus puissant. Raisonnement complexe, problemes difficiles, code. Un peu plus lent. (Qwen 3.5)"
+      artifacts: true
       preset:
         endpoint: "Lancya"
         model: "Qwen/Qwen3.5-397B-A17B-FP8"
