@@ -13,20 +13,52 @@ interface:
   parameters: false
   presets: false
 
+# modelSpecs = la liste curatee des modeles GenevIA.
+# enforce: true masque TOUS les autres endpoints (OpenAI, Anthropic, Google, My Agents).
+# Seuls les modeles ci-dessous sont selectionnables.
+modelSpecs:
+  enforce: true
+  prioritize: true
+  list:
+    - name: "apertus"
+      label: "Apertus 70B : suisse (defaut)"
+      default: true
+      description: "Modele souverain suisse. Recommande par defaut."
+      preset:
+        endpoint: "GenevIA"
+        model: "swiss-ai/Apertus-70B-Instruct-2509"
+    - name: "mistral-small"
+      label: "Mistral Small : boost qualite"
+      description: "Pour les taches qui demandent plus de finesse."
+      preset:
+        endpoint: "GenevIA"
+        model: "mistralai/Mistral-Small-4-119B-2603"
+    - name: "ministral"
+      label: "Ministral : rapide et economique"
+      description: "Reponses rapides, faible cout."
+      preset:
+        endpoint: "GenevIA"
+        model: "mistralai/Ministral-3-14B-Instruct-2512"
+    - name: "qwen"
+      label: "Qwen 3.5 : raisonnement avance"
+      description: "Le plus costaud pour le raisonnement complexe."
+      preset:
+        endpoint: "GenevIA"
+        model: "Qwen/Qwen3.5-397B-A17B-FP8"
+
 endpoints:
   custom:
     - name: 'GenevIA'
       apiKey: '${INFOMANIAK_API_KEY}'
       baseURL: 'https://api.infomaniak.com/2/ai/${PRODUCT_ID}/openai/v1'
       models:
-        # Seuls ces 2 modeles sont visibles cote utilisateur.
-        # Le premier (Apertus) est le defaut.
         default:
           - 'swiss-ai/Apertus-70B-Instruct-2509'
           - 'mistralai/Mistral-Small-4-119B-2603'
+          - 'mistralai/Ministral-3-14B-Instruct-2512'
+          - 'Qwen/Qwen3.5-397B-A17B-FP8'
         fetch: false
       titleConvo: true
       # Modele bon marche pour generer les titres de conversation (protege la marge)
       titleModel: 'mistralai/Ministral-3-14B-Instruct-2512'
       modelDisplayLabel: 'GenevIA'
-      iconURL: ''
