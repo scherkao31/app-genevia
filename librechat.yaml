@@ -62,15 +62,17 @@ modelSpecs:
     - name: "standard"
       label: "Lancya"
       default: true
-      description: "Rapide, intelligent et agentique. Recommande par defaut. Recherche web disponible via le bouton. (Mistral Small 4)"
+      description: "Rapide, intelligent et agentique : recherche web automatique. Recommande par defaut. (Mistral Small 4)"
       artifacts: true
+      webSearch: true
       preset:
         endpoint: "Lancya"
         model: "mistralai/Mistral-Small-4-119B-2603"
     - name: "expert"
       label: "Lancya Expert"
-      description: "Le plus puissant. Raisonnement profond pour les problemes complexes et le code. Plus lent. (Kimi K2.6)"
+      description: "Le plus puissant : raisonnement profond et recherche web pour les problemes complexes et le code. Plus lent. (Kimi K2.6)"
       artifacts: true
+      webSearch: true
       preset:
         endpoint: "Lancya"
         model: "moonshotai/Kimi-K2.6"
