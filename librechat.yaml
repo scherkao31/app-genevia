@@ -46,8 +46,10 @@ memory:
 # ----------------------------------------------------------------------------
 webSearch:
   searchProvider: "searxng"
+  scraperProvider: "firecrawl"
   rerankerType: "none"
   searxngInstanceUrl: "${SEARXNG_INSTANCE_URL}"
+  firecrawlApiKey: "${FIRECRAWL_API_KEY}"
   safeSearch: 1
 
 # modelSpecs = la liste curatee des modeles Lancya.
