@@ -2,18 +2,18 @@ version: 1.2.8
 cache: true
 
 # ----------------------------------------------------------------------------
-# GenevIA Workspace — configuration LibreChat
+# Lancya — configuration LibreChat
 # Inference: Infomaniak AI (Suisse), API compatible OpenAI
 # product_id: 109317
 # ----------------------------------------------------------------------------
 
 interface:
-  customWelcome: "Bienvenue sur GenevIA, {{user.name}}. Votre IA pense en Suisse."
+  customWelcome: "Bienvenue sur Lancya, {{user.name}}. Votre IA pense en Suisse."
   # On masque les reglages avances pour eviter la paralysie du choix
   parameters: false
   presets: false
 
-# modelSpecs = la liste curatee des modeles GenevIA.
+# modelSpecs = la liste curatee des modeles Lancya.
 # enforce: true masque TOUS les autres endpoints (OpenAI, Anthropic, Google, My Agents).
 # Seuls les modeles ci-dessous sont selectionnables.
 modelSpecs:
@@ -25,30 +25,30 @@ modelSpecs:
       default: true
       description: "Modele souverain suisse. Recommande par defaut."
       preset:
-        endpoint: "GenevIA"
+        endpoint: "Lancya"
         model: "swiss-ai/Apertus-70B-Instruct-2509"
     - name: "mistral-small"
       label: "Mistral Small : boost qualite"
       description: "Pour les taches qui demandent plus de finesse."
       preset:
-        endpoint: "GenevIA"
+        endpoint: "Lancya"
         model: "mistralai/Mistral-Small-4-119B-2603"
     - name: "ministral"
       label: "Ministral : rapide et economique"
       description: "Reponses rapides, faible cout."
       preset:
-        endpoint: "GenevIA"
+        endpoint: "Lancya"
         model: "mistralai/Ministral-3-14B-Instruct-2512"
     - name: "qwen"
       label: "Qwen 3.5 : raisonnement avance"
       description: "Le plus costaud pour le raisonnement complexe."
       preset:
-        endpoint: "GenevIA"
+        endpoint: "Lancya"
         model: "Qwen/Qwen3.5-397B-A17B-FP8"
 
 endpoints:
   custom:
-    - name: 'GenevIA'
+    - name: 'Lancya'
       apiKey: '${INFOMANIAK_API_KEY}'
       baseURL: 'https://api.infomaniak.com/2/ai/${PRODUCT_ID}/openai/v1'
       models:
@@ -61,4 +61,4 @@ endpoints:
       titleConvo: true
       # Modele bon marche pour generer les titres de conversation (protege la marge)
       titleModel: 'mistralai/Ministral-3-14B-Instruct-2512'
-      modelDisplayLabel: 'GenevIA'
+      modelDisplayLabel: 'Lancya'

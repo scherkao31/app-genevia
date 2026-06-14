@@ -1,6 +1,6 @@
 # app-genevia
 
-Configuration de **GenevIA Workspace** : un workspace IA souverain basé sur [LibreChat](https://www.librechat.ai), avec inférence hébergée en Suisse chez [Infomaniak AI](https://www.infomaniak.com/fr/hosting/ai-services).
+Configuration de **Lancya Workspace** : un workspace IA souverain basé sur [LibreChat](https://www.librechat.ai), avec inférence hébergée en Suisse chez [Infomaniak AI](https://www.infomaniak.com/fr/hosting/ai-services).
 
 ## Contenu
 
