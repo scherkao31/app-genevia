@@ -62,12 +62,11 @@ modelSpecs:
     - name: "standard"
       label: "Lancya"
       default: true
-      description: "Rapide, intelligent et agentique : recherche web et outils automatiquement. Recommande par defaut. (Mistral Small 4)"
+      description: "Rapide, intelligent et agentique. Recommande par defaut. Recherche web disponible via le bouton. (Mistral Small 4)"
       artifacts: true
       preset:
         endpoint: "Lancya"
         model: "mistralai/Mistral-Small-4-119B-2603"
-        web_search: true
     - name: "expert"
       label: "Lancya Expert"
       description: "Le plus puissant. Raisonnement profond pour les problemes complexes et le code. Plus lent. (Kimi K2.6)"
@@ -75,7 +74,6 @@ modelSpecs:
       preset:
         endpoint: "Lancya"
         model: "moonshotai/Kimi-K2.6"
-        web_search: true
     - name: "suisse"
       label: "Lancya Suisse"
       description: "Le modele 100% suisse (Apertus). Ideal pour le chat et la confidentialite maximale. N'utilise pas les outils."
