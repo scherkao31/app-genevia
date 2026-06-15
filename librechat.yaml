@@ -64,6 +64,7 @@ modelSpecs:
       description: "Rapide, intelligent et agentique : recherche web, documents et outils, automatiquement. Recommande par defaut."
       artifacts: true
       webSearch: true
+      fileSearch: true
       preset:
         endpoint: "Lancya"
         model: "moonshotai/Kimi-K2.6"
