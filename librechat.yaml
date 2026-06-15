@@ -15,11 +15,9 @@ cache: true
 # ----------------------------------------------------------------------------
 balance:
   enabled: true
-  startBalance: 15000000        # credits offerts a l'inscription (~15 M tokens)
-  autoRefillEnabled: true
-  refillIntervalValue: 30
-  refillIntervalUnit: "days"
-  refillAmount: 15000000        # recharge ajoutee tous les 30 jours
+  startBalance: 1000000         # tier gratuit : ~1 M credits offerts une fois a l'inscription
+  autoRefillEnabled: false      # pas de recharge auto : le gratuit s'epuise (-> upgrade),
+                                # et le bridge Stripe gere les recharges des abonnes payants
 
 interface:
   customWelcome: "Bienvenue sur Lancya, {{user.name}}. Votre IA pense en Suisse."
