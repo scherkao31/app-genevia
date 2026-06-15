@@ -36,6 +36,7 @@ memory:
   tokenLimit: 2000
   messageWindowSize: 5
   agent:
+    enabled: true
     provider: "Lancya"
     model: "mistralai/Ministral-3-14B-Instruct-2512"
 
