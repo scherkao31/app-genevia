@@ -97,6 +97,7 @@ modelSpecs:
       webSearch: true
       fileSearch: true
       skills: true
+      executeCode: true
       preset:
         endpoint: "Lancya"
         model: "moonshotai/Kimi-K2.6"
