@@ -76,6 +76,7 @@ skillSync:
         paths:
           - skills
         skillDiscoveryDepth: 2
+        token: "${GITHUB_SKILLS_TOKEN}"
 
 # modelSpecs = la liste curatee des modeles Lancya.
 # enforce: true masque TOUS les autres endpoints (OpenAI, Anthropic, Google, My Agents).
