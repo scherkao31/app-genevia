@@ -25,6 +25,12 @@ interface:
   # On masque les reglages avances pour eviter la paralysie du choix
   parameters: false
   presets: false
+  # Skills actifs par defaut pour les utilisateurs (les skills synchronises depuis le repo
+  # sont partages par le systeme : defaultActiveOnShare les rend actifs sans action manuelle)
+  skills:
+    use: true
+    create: true
+    defaultActiveOnShare: true
 
 # ----------------------------------------------------------------------------
 # Memoire utilisateur (contexte retenu d'une conversation a l'autre).
@@ -51,6 +57,25 @@ webSearch:
   searxngInstanceUrl: "${SEARXNG_INSTANCE_URL}"
   firecrawlApiKey: "${FIRECRAWL_API_KEY}"
   safeSearch: 1
+
+# ----------------------------------------------------------------------------
+# Synchronisation des skills depuis le depot GitHub scherkao31/lancya-skills.
+# Pour ajouter / importer / modifier une skill : pousser sur ce repo (pas de rebuild).
+# Les skills sont dans skills/<nom>/SKILL.md. Repo public -> pas de token requis.
+# ----------------------------------------------------------------------------
+skillSync:
+  github:
+    enabled: true
+    runOnStartup: true
+    intervalMinutes: 60
+    sources:
+      - id: lancya
+        owner: scherkao31
+        repo: lancya-skills
+        ref: main
+        paths:
+          - skills
+        skillDiscoveryDepth: 2
 
 # modelSpecs = la liste curatee des modeles Lancya.
 # enforce: true masque TOUS les autres endpoints (OpenAI, Anthropic, Google, My Agents).
