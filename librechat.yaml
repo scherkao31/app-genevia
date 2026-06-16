@@ -1,6 +1,10 @@
 version: 1.2.8
 cache: true
 
+# Stockage des fichiers sur l'Object Storage Infomaniak (S3, Suisse, souverain).
+# Les cles et l'endpoint sont dans les variables d'environnement Railway (AWS_*).
+fileStrategy: s3
+
 # ----------------------------------------------------------------------------
 # Lancya — configuration LibreChat
 # Inference: Infomaniak AI (Suisse), API compatible OpenAI
