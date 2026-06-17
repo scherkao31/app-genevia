@@ -134,6 +134,10 @@ modelSpecs:
       fileSearch: true
       skills: true
       executeCode: true
+      # Masque la rangee de pastilles (web/code/fichiers/artefacts) sous l'input pour une
+      # interface plus epuree. Les capacites restent ACTIVES par defaut (champs ci-dessus),
+      # elles s'enclenchent automatiquement ; on retire juste l'encombrement visuel.
+      hideBadgeRow: true
       preset:
         endpoint: "Lancya"
         model: "moonshotai/Kimi-K2.6"
@@ -154,6 +158,7 @@ modelSpecs:
     - name: "suisse"
       label: "Apertus"
       iconURL: "/assets/lancya-model.svg"
+      hideBadgeRow: true
       description: "Le modèle suisse Apertus, hébergé sur les serveurs Infomaniak. Plus modeste et moins puissant que le modèle principal, mais parfait pour un échange rapide ; il reflète ce que la Suisse propose aujourd'hui."
       artifacts: true
       preset:
