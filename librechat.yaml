@@ -98,6 +98,7 @@ modelSpecs:
   list:
     - name: "standard"
       label: "Lancya"
+      iconURL: "/assets/lancya-mark.svg"
       default: true
       description: "Kimi K2, hébergé sur les serveurs Infomaniak en Suisse. Rapide, intelligent et agentique : recherche web, documents et outils, automatiquement. Recommandé par défaut."
       artifacts: true
@@ -122,6 +123,7 @@ modelSpecs:
           Sois utile, precis et concis.
     - name: "suisse"
       label: "Apertus"
+      iconURL: "/assets/lancya-mark.svg"
       description: "Le modèle suisse Apertus, hébergé sur les serveurs Infomaniak. Plus modeste et moins puissant que le modèle principal, mais parfait pour un échange rapide ; il reflète ce que la Suisse propose aujourd'hui."
       artifacts: true
       preset:
