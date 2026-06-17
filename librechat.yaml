@@ -55,7 +55,10 @@ memory:
   agent:
     enabled: true
     provider: "Lancya"
-    model: "mistralai/Ministral-3-14B-Instruct-2512"
+    # Mistral-Small : bon compromis cout/fiabilite d'appel d'outils pour la tache memoire
+    # (Ministral = trop petit/instable = risque de payer pour rien ; Qwen 122B = 2x = surdimensionne).
+    # Le surcout par tour reste faible (petite fenetre) face a la reponse principale (Kimi).
+    model: "mistralai/Mistral-Small-4-119B-2603"
     # Instructions PROACTIVES : surcharge le prompt par defaut de LibreChat (qui ne retient
     # QUE sur demande explicite). Ici l'agent capte de lui-meme les infos durables et utiles,
     # avec des garde-fous de confidentialite stricts (audience au secret professionnel).
