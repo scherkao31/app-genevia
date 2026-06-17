@@ -129,6 +129,10 @@ modelSpecs:
         model: "swiss-ai/Apertus-70B-Instruct-2509"
 
 endpoints:
+  # Agents : ne proposer que le fournisseur Lancya dans le constructeur (masque OpenAI/Google).
+  agents:
+    allowedProviders:
+      - "Lancya"
   custom:
     - name: 'Lancya'
       apiKey: '${INFOMANIAK_API_KEY}'
