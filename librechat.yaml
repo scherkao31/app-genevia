@@ -26,6 +26,13 @@ balance:
 interface:
   customWelcome: "Bienvenue sur Lancya, {{user.name}}. Votre IA pense en Suisse."
   customFooter: "Lancya · IA souveraine, hébergée en Suisse"
+  # Liens legaux (pages servies par le fork : /confidentialite et /conditions)
+  privacyPolicy:
+    externalUrl: "https://www.lancya.ch/confidentialite"
+    openNewTab: true
+  termsOfService:
+    externalUrl: "https://www.lancya.ch/conditions"
+    openNewTab: true
   # On masque les reglages avances pour eviter la paralysie du choix
   parameters: false
   presets: false
