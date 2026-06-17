@@ -33,6 +33,8 @@ interface:
   termsOfService:
     externalUrl: "https://www.lancya.ch/conditions"
     openNewTab: true
+  # Bouton "Aide & FAQ" du menu compte -> notre page FAQ (servie par le fork : /aide)
+  helpAndFaqURL: "https://www.lancya.ch/aide"
   # On masque les reglages avances pour eviter la paralysie du choix
   parameters: false
   presets: false
@@ -186,4 +188,10 @@ endpoints:
       titleConvo: true
       # Modele bon marche pour generer les titres de conversation (protege la marge)
       titleModel: 'mistralai/Ministral-3-14B-Instruct-2512'
+      # Consigne de titrage : dans la langue de l'utilisateur, sans guillemets ni markdown.
+      titlePrompt: |
+        Genere un titre tres court (5 mots maximum) qui resume la conversation.
+        Le titre DOIT etre redige dans la LANGUE DE L'UTILISATEUR (le plus souvent le francais).
+        N'entoure JAMAIS le titre de guillemets. N'utilise ni markdown, ni gras, ni ponctuation finale.
+        Reponds uniquement par le titre, rien d'autre.
       modelDisplayLabel: 'Lancya'
