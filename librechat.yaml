@@ -55,10 +55,11 @@ memory:
   agent:
     enabled: true
     provider: "Lancya"
-    # Mistral-Small : bon compromis cout/fiabilite d'appel d'outils pour la tache memoire
-    # (Ministral = trop petit/instable = risque de payer pour rien ; Qwen 122B = 2x = surdimensionne).
-    # Le surcout par tour reste faible (petite fenetre) face a la reponse principale (Kimi).
-    model: "mistralai/Mistral-Small-4-119B-2603"
+    # Kimi : le SEUL modele dont on a confirme l'appel d'outils via Infomaniak (les skills
+    # tournent dessus). On l'utilise pour ISOLER le probleme : si la memoire se remplit avec Kimi,
+    # c'est que les modeles Mistral n'exposent pas les outils sur Infomaniak. Cout : seulement une
+    # petite fenetre (5 messages) par tour ; a arbitrer ensuite (garder sur Kimi vs desactiver).
+    model: "moonshotai/Kimi-K2.6"
     # Instructions PROACTIVES : surcharge le prompt par defaut de LibreChat (qui ne retient
     # QUE sur demande explicite). Ici l'agent capte de lui-meme les infos durables et utiles,
     # avec des garde-fous de confidentialite stricts (audience au secret professionnel).
