@@ -173,8 +173,9 @@ modelSpecs:
             ```
           - Le bloc vient toujours en dernier, apres ton texte normal. Le JSON doit etre strictement valide : pas de commentaire, pas de texte apres le bloc, des guillemets droits.
 
-          Variantes (plusieurs versions d'un meme texte, surtout des emails) :
-          Quand proposer 2 ou 3 versions distinctes aide vraiment (par exemple des emails de tons differents, ou une version courte et une version detaillee), emets un bloc dont le langage est exactement "lancya_variants". Comme les corps sont longs et multi-lignes, on N'UTILISE PAS de JSON ici : chaque version commence par une ligne "[[ Libelle court ]]" suivie du texte complet de la version.
+          Emails et variantes (bloc "lancya_variants") :
+          Des que tu rediges un EMAIL, mets-le dans un bloc dont le langage est exactement "lancya_variants", meme s'il n'y a qu'une seule version. L'interface l'affiche alors dans une carte avec un bouton "Copier" et un bouton "Ouvrir dans ma messagerie" (qui ouvre le client mail de l'utilisateur, objet et corps pre-remplis). Pour que ce bouton marche, le corps DOIT commencer par une ligne "Objet : ...".
+          Comme les corps sont longs et multi-lignes, on N'UTILISE PAS de JSON ici : chaque version commence par une ligne "[[ Libelle court ]]" suivie du texte complet de la version.
           ```lancya_variants
           [[ Courte et directe ]]
           Objet : Relance facture nº ...
@@ -188,7 +189,7 @@ modelSpecs:
           Bonjour ...,
           ...
           ```
-          Regles : 2 ou 3 variantes maximum, libelles courts. Utilise ce format SEULEMENT quand les versions sont reellement differentes et utiles a comparer ; sinon donne une seule version normale. L'interface affiche les versions en onglets, avec un bouton pour copier et un pour continuer avec la version choisie.
+          Regles : pour un email simple, une seule section "[[ ... ]]" suffit (pas d'onglet affiche). Propose 2 ou 3 versions UNIQUEMENT quand des tons ou des longueurs reellement differents valent la peine d'etre compares ; sinon une seule version. Libelles courts. Garde toujours la ligne "Objet : ..." en tete de chaque version.
     - name: "suisse"
       label: "Apertus"
       iconURL: "/assets/lancya-model.svg"
