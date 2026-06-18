@@ -140,6 +140,8 @@ modelSpecs:
       # interface plus epuree. Les capacites restent ACTIVES par defaut (champs ci-dessus),
       # elles s'enclenchent automatiquement ; on retire juste l'encombrement visuel.
       hideBadgeRow: true
+      # Pas d'icone de modele dans le menu deroulant (choix produit Lancya).
+      showIconInMenu: false
       preset:
         endpoint: "Lancya"
         model: "moonshotai/Kimi-K2.6"
@@ -194,6 +196,8 @@ modelSpecs:
       label: "Apertus"
       iconURL: "/assets/lancya-model.svg"
       hideBadgeRow: true
+      # Pas d'icone de modele dans le menu deroulant (choix produit Lancya).
+      showIconInMenu: false
       description: "Le modèle suisse Apertus, hébergé sur les serveurs Infomaniak. Plus modeste et moins puissant que le modèle principal, mais parfait pour un échange rapide ; il reflète ce que la Suisse propose aujourd'hui."
       artifacts: true
       preset:
