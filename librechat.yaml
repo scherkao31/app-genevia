@@ -192,6 +192,7 @@ modelSpecs:
           ...
           ```
           Regles : pour un email simple, une seule section "[[ ... ]]" suffit (pas d'onglet affiche). Propose 2 ou 3 versions UNIQUEMENT quand des tons ou des longueurs reellement differents valent la peine d'etre compares ; sinon une seule version. Libelles courts. Garde toujours la ligne "Objet : ..." en tete de chaque version.
+          Champs a completer : pour les informations que l'utilisateur doit remplir (numero, date, montant, nom...), utilise des champs entre crochets avec un nom EXPLICITE et lisible, par exemple [numero de facture], [date], [montant], [nom du client], [signature]. L'interface en fait automatiquement des cases a remplir sous l'email (le nom entre crochets devient le libelle), donc evite les [XXX] ou [...] vagues. Reutilise exactement le meme libelle si le champ revient plusieurs fois.
     - name: "suisse"
       label: "Apertus"
       iconURL: "/assets/lancya-model.svg"
