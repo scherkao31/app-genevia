@@ -224,15 +224,16 @@ endpoints:
           - 'moonshotai/Kimi-K2.6'
         fetch: false
       titleConvo: true
-      # Titrage via Kimi + methode "structured" : le titre est extrait d'une sortie
-      # STRUCTUREE (un champ title), donc le raisonnement du modele ne fuit JAMAIS
-      # dans le titre (contrairement a la voie "completion" en texte brut). On utilise
-      # Kimi car c'est le seul modele dont le tool-calling est confirme sur Infomaniak,
-      # et "structured" repose dessus. Titres rares et courts : surcout negligeable.
-      titleModel: 'moonshotai/Kimi-K2.6'
-      titleMethod: 'structured'
+      # Titrage : methode "completion" + un modele INSTRUCT qui ne raisonne pas
+      # (Mistral Small 4). Pourquoi : "structured" sur Kimi recrachait l'instruction
+      # comme titre ; et un modele qui raisonne en texte brut laisse fuir son
+      # raisonnement (sanitizeTitle ne nettoie que les balises <think>). Un modele
+      # non-raisonnant n'a rien a fuiter et suit "ecris juste un titre". Bon marche,
+      # adapte a des titres frequents et courts.
+      titleModel: 'mistralai/Mistral-Small-4-119B-2603'
+      titleMethod: 'completion'
       titlePrompt: |
-        Genere un titre tres court (5 mots maximum) qui resume la conversation,
-        dans la LANGUE DE L'UTILISATEUR (le plus souvent le francais).
-        Pas de guillemets, pas de markdown, pas de gras, pas de ponctuation finale.
+        A partir de la conversation, ecris UNIQUEMENT un titre court (3 a 6 mots) qui resume le SUJET reel de l'echange, dans la langue de l'utilisateur (le plus souvent le francais).
+        Ne recopie pas ces consignes. Pas de guillemets, pas de markdown, pas de ponctuation finale. Reponds seulement par le titre, rien d'autre.
+        Par exemple, pour une demande de presentation sur l'IA dans les PME suisses, un bon titre serait : Presentation IA PME suisses.
       modelDisplayLabel: 'Lancya'
