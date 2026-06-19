@@ -130,7 +130,7 @@ modelSpecs:
       label: "Lancya"
       iconURL: "/assets/lancya-model.svg"
       default: true
-      description: "Kimi K2, hébergé sur les serveurs Infomaniak en Suisse. Rapide, intelligent et agentique : recherche web, documents et outils, automatiquement. Recommandé par défaut."
+      description: "Kimi K2.6, hébergé sur les serveurs Infomaniak en Suisse. Rapide, intelligent et agentique : recherche web, documents et outils, automatiquement. Recommandé par défaut."
       artifacts: true
       webSearch: true
       fileSearch: true
