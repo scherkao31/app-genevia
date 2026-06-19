@@ -224,12 +224,13 @@ endpoints:
           - 'moonshotai/Kimi-K2.6'
         fetch: false
       titleConvo: true
-      # Titrage : completion + Mistral Small 4 (instruct, ne raisonne pas). NE JAMAIS
-      # mettre d'EXEMPLE de sujet dans ce prompt : le modele le recopie comme titre au
-      # lieu de lire la conversation (bug observe : un exemple "IA PME suisses" donnait
-      # toujours un titre sur l'IA, meme pour une conv sur "Robert et le ski"). Le prompt
-      # reste donc minimal et ancre sur le contenu reel de l'utilisateur.
-      titleModel: 'mistralai/Mistral-Small-4-119B-2603'
+      # Titrage : completion + Gemma 4-31B (google/gemma-4-31B-it). Choisi car c'est un
+      # modele INSTRUCT NON-RAISONNANT : aucun raisonnement ne peut fuiter dans le titre
+      # (c'est ce qui nous a brule avec Ministral), il est competent pour une tache
+      # simple, et c'est le moins cher des modeles serieux (0.20/0.40 par M ; un titre
+      # coute des fractions de centime). NE JAMAIS mettre d'EXEMPLE de sujet dans le
+      # prompt : le modele le recopie comme titre au lieu de lire la conversation.
+      titleModel: 'google/gemma-4-31B-it'
       titleMethod: 'completion'
       titlePrompt: |
         Donne un titre tres court (3 a 6 mots) au sujet de la conversation ci-dessus, dans la langue de l'utilisateur (souvent le francais).
