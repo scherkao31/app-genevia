@@ -224,16 +224,14 @@ endpoints:
           - 'moonshotai/Kimi-K2.6'
         fetch: false
       titleConvo: true
-      # Titrage : completion + Gemma 4-31B (google/gemma-4-31B-it). Choisi car c'est un
-      # modele INSTRUCT NON-RAISONNANT : aucun raisonnement ne peut fuiter dans le titre
-      # (c'est ce qui nous a brule avec Ministral), il est competent pour une tache
-      # simple, et c'est le moins cher des modeles serieux (0.20/0.40 par M ; un titre
-      # coute des fractions de centime). NE JAMAIS mettre d'EXEMPLE de sujet dans le
-      # prompt : le modele le recopie comme titre au lieu de lire la conversation.
+      # Titrage : on garde le GABARIT PAR DEFAUT de LibreChat (qui injecte BIEN la
+      # conversation), avec juste un modele propre. CAUSE RACINE TROUVEE (2026-06-19) :
+      # un `titlePrompt` custom REMPLACE le gabarit qui contient la conversation -> le
+      # modele ne recevait plus le contenu, d'ou des titres absurdes ("donnez-moi la
+      # conversation", echo de l'instruction, copie de l'exemple...). On a longtemps cru
+      # a un probleme de modele : non, c'etait le contenu absent. Donc PAS de titlePrompt.
+      # Modele = Gemma 4-31B (instruct non-raisonnant, pas cher, fiable sur tache simple).
+      # Si les titres sortent en anglais : utiliser `titlePromptTemplate` avec le
+      # placeholder de conversation {convo} (et NON `titlePrompt`).
       titleModel: 'google/gemma-4-31B-it'
-      titleMethod: 'completion'
-      titlePrompt: |
-        Donne un titre tres court (3 a 6 mots) au sujet de la conversation ci-dessus, dans la langue de l'utilisateur (souvent le francais).
-        Titre le CONTENU reel dont parle l'utilisateur, pas le format de la demande : si l'utilisateur ecrit "fais un slide sur Robert", le titre porte sur Robert, pas sur les slides ni sur l'IA.
-        N'invente aucun sujet et ne recopie pas ces consignes. Reponds uniquement par le titre : pas de guillemets, pas de markdown, pas de ponctuation finale.
       modelDisplayLabel: 'Lancya'
