@@ -224,12 +224,15 @@ endpoints:
           - 'moonshotai/Kimi-K2.6'
         fetch: false
       titleConvo: true
-      # Modele bon marche pour generer les titres de conversation (protege la marge)
-      titleModel: 'mistralai/Ministral-3-14B-Instruct-2512'
-      # Consigne de titrage : dans la langue de l'utilisateur, sans guillemets ni markdown.
+      # Titrage via Kimi + methode "structured" : le titre est extrait d'une sortie
+      # STRUCTUREE (un champ title), donc le raisonnement du modele ne fuit JAMAIS
+      # dans le titre (contrairement a la voie "completion" en texte brut). On utilise
+      # Kimi car c'est le seul modele dont le tool-calling est confirme sur Infomaniak,
+      # et "structured" repose dessus. Titres rares et courts : surcout negligeable.
+      titleModel: 'moonshotai/Kimi-K2.6'
+      titleMethod: 'structured'
       titlePrompt: |
-        Genere un titre tres court (5 mots maximum) qui resume la conversation.
-        Le titre DOIT etre redige dans la LANGUE DE L'UTILISATEUR (le plus souvent le francais).
-        N'entoure JAMAIS le titre de guillemets. N'utilise ni markdown, ni gras, ni ponctuation finale.
-        Reponds uniquement par le titre, rien d'autre.
+        Genere un titre tres court (5 mots maximum) qui resume la conversation,
+        dans la LANGUE DE L'UTILISATEUR (le plus souvent le francais).
+        Pas de guillemets, pas de markdown, pas de gras, pas de ponctuation finale.
       modelDisplayLabel: 'Lancya'
