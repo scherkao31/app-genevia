@@ -231,7 +231,16 @@ endpoints:
       # conversation", echo de l'instruction, copie de l'exemple...). On a longtemps cru
       # a un probleme de modele : non, c'etait le contenu absent. Donc PAS de titlePrompt.
       # Modele = Gemma 4-31B (instruct non-raisonnant, pas cher, fiable sur tache simple).
-      # Si les titres sortent en anglais : utiliser `titlePromptTemplate` avec le
-      # placeholder de conversation {convo} (et NON `titlePrompt`).
+      # LANGUE : via `titlePromptTemplate` (PAS titlePrompt), qui GARDE la conversation
+      # grace au placeholder {convo}. Aucun exemple de sujet ici (sinon le modele le
+      # recopie). Si le titre redevenait absurde, c'est que {convo} n'est pas le bon
+      # placeholder -> revenir a sans-template (titres en anglais mais corrects).
       titleModel: 'google/gemma-4-31B-it'
+      titlePromptTemplate: |
+        Conversation entre un utilisateur et un assistant :
+        {convo}
+
+        Donne un titre tres court (3 a 6 mots) a cette conversation, EN FRANCAIS.
+        Resume le sujet reel (la personne ou le theme dont il est question), pas le format demande : ne commence pas par "Slide", "HTML" ou "Presentation" si ce n'est que le format.
+        Reponds uniquement par le titre, sans guillemets, sans markdown, sans ponctuation finale.
       modelDisplayLabel: 'Lancya'
