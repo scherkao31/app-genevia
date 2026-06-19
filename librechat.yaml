@@ -224,23 +224,19 @@ endpoints:
           - 'moonshotai/Kimi-K2.6'
         fetch: false
       titleConvo: true
-      # Titrage : on garde le GABARIT PAR DEFAUT de LibreChat (qui injecte BIEN la
-      # conversation), avec juste un modele propre. CAUSE RACINE TROUVEE (2026-06-19) :
-      # un `titlePrompt` custom REMPLACE le gabarit qui contient la conversation -> le
-      # modele ne recevait plus le contenu, d'ou des titres absurdes ("donnez-moi la
-      # conversation", echo de l'instruction, copie de l'exemple...). On a longtemps cru
-      # a un probleme de modele : non, c'etait le contenu absent. Donc PAS de titlePrompt.
-      # Modele = Gemma 4-31B (instruct non-raisonnant, pas cher, fiable sur tache simple).
-      # LANGUE : via `titlePromptTemplate` (PAS titlePrompt), qui GARDE la conversation
-      # grace au placeholder {convo}. Aucun exemple de sujet ici (sinon le modele le
-      # recopie). Si le titre redevenait absurde, c'est que {convo} n'est pas le bon
-      # placeholder -> revenir a sans-template (titres en anglais mais corrects).
+      # Titrage (regle confirmee par la doc LibreChat) : `titlePrompt` EST le prompt
+      # principal et DOIT contenir le placeholder {convo} (= la conversation injectee).
+      # Mon erreur d'origine : un titlePrompt SANS {convo} -> conversation jamais injectee
+      # -> tous les titres absurdes (le modele n'avait rien a titrer). `titlePromptTemplate`
+      # ne sert qu'au FORMATAGE de la conversation ({input}/{output}), on garde son defaut.
+      # Modele = Gemma 4-31B (instruct non-raisonnant, pas cher). NE JAMAIS mettre
+      # d'exemple de SUJET dans le prompt (le modele le recopierait).
       titleModel: 'google/gemma-4-31B-it'
-      titlePromptTemplate: |
-        Conversation entre un utilisateur et un assistant :
+      titlePrompt: |
+        Voici une conversation entre un utilisateur et un assistant :
         {convo}
 
         Donne un titre tres court (3 a 6 mots) a cette conversation, EN FRANCAIS.
-        Resume le sujet reel (la personne ou le theme dont il est question), pas le format demande : ne commence pas par "Slide", "HTML" ou "Presentation" si ce n'est que le format.
+        Resume le sujet reel dont il est question, pas le format de la demande : ne commence pas par "Slide", "HTML" ou "Presentation" si ce n'est que le format demande.
         Reponds uniquement par le titre, sans guillemets, sans markdown, sans ponctuation finale.
       modelDisplayLabel: 'Lancya'
