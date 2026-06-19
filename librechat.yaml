@@ -224,16 +224,15 @@ endpoints:
           - 'moonshotai/Kimi-K2.6'
         fetch: false
       titleConvo: true
-      # Titrage : methode "completion" + un modele INSTRUCT qui ne raisonne pas
-      # (Mistral Small 4). Pourquoi : "structured" sur Kimi recrachait l'instruction
-      # comme titre ; et un modele qui raisonne en texte brut laisse fuir son
-      # raisonnement (sanitizeTitle ne nettoie que les balises <think>). Un modele
-      # non-raisonnant n'a rien a fuiter et suit "ecris juste un titre". Bon marche,
-      # adapte a des titres frequents et courts.
+      # Titrage : completion + Mistral Small 4 (instruct, ne raisonne pas). NE JAMAIS
+      # mettre d'EXEMPLE de sujet dans ce prompt : le modele le recopie comme titre au
+      # lieu de lire la conversation (bug observe : un exemple "IA PME suisses" donnait
+      # toujours un titre sur l'IA, meme pour une conv sur "Robert et le ski"). Le prompt
+      # reste donc minimal et ancre sur le contenu reel de l'utilisateur.
       titleModel: 'mistralai/Mistral-Small-4-119B-2603'
       titleMethod: 'completion'
       titlePrompt: |
-        A partir de la conversation, ecris UNIQUEMENT un titre court (3 a 6 mots) qui resume le SUJET reel de l'echange, dans la langue de l'utilisateur (le plus souvent le francais).
-        Ne recopie pas ces consignes. Pas de guillemets, pas de markdown, pas de ponctuation finale. Reponds seulement par le titre, rien d'autre.
-        Par exemple, pour une demande de presentation sur l'IA dans les PME suisses, un bon titre serait : Presentation IA PME suisses.
+        Donne un titre tres court (3 a 6 mots) au sujet de la conversation ci-dessus, dans la langue de l'utilisateur (souvent le francais).
+        Titre le CONTENU reel dont parle l'utilisateur, pas le format de la demande : si l'utilisateur ecrit "fais un slide sur Robert", le titre porte sur Robert, pas sur les slides ni sur l'IA.
+        N'invente aucun sujet et ne recopie pas ces consignes. Reponds uniquement par le titre : pas de guillemets, pas de markdown, pas de ponctuation finale.
       modelDisplayLabel: 'Lancya'
