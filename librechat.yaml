@@ -152,6 +152,25 @@ mcpServers:
       IMAP_PASS:
         title: "Mot de passe d'application"
         description: "À générer dans votre espace Infomaniak, distinct de votre mot de passe habituel."
+  agenda:
+    type: streamable-http
+    url: "https://agenda-mcp-production-9821.up.railway.app/mcp"
+    title: "Agenda"
+    description: "Connectez votre agenda Infomaniak pour que Lancya puisse le consulter (lecture seule)."
+    chatMenu: true
+    startup: false
+    headers:
+      X-Caldav-User: "{{CALDAV_USER}}"
+      X-Caldav-Pass: "{{CALDAV_PASS}}"
+      X-Caldav-Url: "https://sync.infomaniak.com/"
+    customUserVars:
+      CALDAV_USER:
+        title: "Nom d'utilisateur Infomaniak"
+        description: "Votre identifiant de compte (ex. abc12345), trouvable sur config.infomaniak.com. Ce n'est PAS votre adresse email."
+        sensitive: false
+      CALDAV_PASS:
+        title: "Mot de passe d'application"
+        description: "Le même que pour la messagerie (généré dans votre espace Infomaniak)."
 
 # modelSpecs = la liste curatee des modeles Lancya.
 # enforce: true masque TOUS les autres endpoints (OpenAI, Anthropic, Google, My Agents).
@@ -175,7 +194,7 @@ modelSpecs:
       # hideBadgeRow masque le selecteur manuel de connecteurs. "email" = le serveur defini dans
       # le bloc mcpServers plus haut (lecture de la boite). Si l'utilisateur n'a pas saisi ses
       # identifiants dans le connecteur, l'outil existe mais renvoie une erreur d'authentification.
-      mcpServers: ["email"]
+      mcpServers: ["email", "agenda"]
       # Masque la rangee de pastilles (web/code/fichiers/artefacts) sous l'input pour une
       # interface plus epuree. Les capacites restent ACTIVES par defaut (champs ci-dessus),
       # elles s'enclenchent automatiquement ; on retire juste l'encombrement visuel.
