@@ -170,6 +170,12 @@ modelSpecs:
       fileSearch: true
       skills: true
       executeCode: true
+      # Connecteurs MCP rattaches a ce tier : leurs outils sont exposes au modele dans CHAQUE
+      # discussion (meme logique que webSearch/fileSearch ci-dessus). Indispensable ici car
+      # hideBadgeRow masque le selecteur manuel de connecteurs. "email" = le serveur defini dans
+      # le bloc mcpServers plus haut (lecture de la boite). Si l'utilisateur n'a pas saisi ses
+      # identifiants dans le connecteur, l'outil existe mais renvoie une erreur d'authentification.
+      mcpServers: ["email"]
       # Masque la rangee de pastilles (web/code/fichiers/artefacts) sous l'input pour une
       # interface plus epuree. Les capacites restent ACTIVES par defaut (champs ci-dessus),
       # elles s'enclenchent automatiquement ; on retire juste l'encombrement visuel.
