@@ -119,6 +119,40 @@ skillSync:
         skillDiscoveryDepth: 2
         token: "${GITHUB_SKILLS_TOKEN}"
 
+# ----------------------------------------------------------------------------
+# Connecteurs (MCP) : services externes que l'utilisateur branche lui-meme.
+# 1 mecanique reutilisable + N petits serveurs. Chaque utilisateur saisit ses
+# identifiants (customUserVars) ; ils sont injectes PAR UTILISATEUR dans les
+# en-tetes a chaque requete (jamais stockes cote Lancya).
+#   startup: false  -> pas d'init au demarrage (les identifiants n'existent
+#                      qu'apres saisie par l'utilisateur dans l'UI).
+#   chatMenu: true  -> activable/desactivable depuis la discussion.
+#
+# email : boite IMAP en LECTURE SEULE (lister / chercher / lire). Le serveur
+# vit dans le repo LibreChat (dossier mcp-servers/email), deploye comme service
+# Railway separe "email-mcp". Host Infomaniak = mail.infomaniak.com (IMAP 993 SSL).
+# ----------------------------------------------------------------------------
+mcpServers:
+  email:
+    type: streamable-http
+    url: "https://email-mcp-production-fb08.up.railway.app/mcp"
+    title: "Messagerie"
+    description: "Connectez votre boîte email pour que Lancya puisse la consulter (lecture seule)."
+    chatMenu: true
+    startup: false
+    headers:
+      X-Imap-User: "{{IMAP_USER}}"
+      X-Imap-Pass: "{{IMAP_PASS}}"
+      X-Imap-Host: "mail.infomaniak.com"
+    customUserVars:
+      IMAP_USER:
+        title: "Adresse email"
+        description: "Votre adresse email complète (Infomaniak)."
+        sensitive: false
+      IMAP_PASS:
+        title: "Mot de passe d'application"
+        description: "À générer dans votre espace Infomaniak, distinct de votre mot de passe habituel."
+
 # modelSpecs = la liste curatee des modeles Lancya.
 # enforce: true masque TOUS les autres endpoints (OpenAI, Anthropic, Google, My Agents).
 # Seuls les modeles ci-dessous sont selectionnables.
