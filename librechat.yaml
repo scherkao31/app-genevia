@@ -206,6 +206,14 @@ modelSpecs:
         model: "moonshotai/Kimi-K2.6"
         # Nom de l'assistant affiche dans la discussion (sinon l'app derive "Moonshot" du modele).
         modelLabel: "Lancya"
+        # Plafond de sortie genereux. Kimi est un modele de RAISONNEMENT : il ecrit
+        # beaucoup de "reflexion" PUIS le livrable. Un long livrable (carrousel HTML,
+        # presentation, email...) depassait le plafond par defaut -> sortie tronquee
+        # (il fallait dire "continue"). 12000 couvre raisonnement + livrable. maxContextTokens
+        # = budget total (Infomaniak Kimi K2.6 : ~100K entree / 256K contexte, donc 64000 est sur).
+        # Porte UNIQUEMENT sur ce spec (Kimi) ; Apertus garde son defaut (contexte plus petit).
+        maxContextTokens: 64000
+        maxOutputTokens: 12000
         promptPrefix: |
           Tu es l'assistant de Lancya. Reponds toujours dans la langue de l'utilisateur (souvent le francais). Ecris comme un professionnel humain : clair, direct, naturel.
 
